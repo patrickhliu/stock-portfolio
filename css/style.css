@@ -1,0 +1,339 @@
+/*
+ *   Site Wide
+ */
+
+html, body {
+	height: 100%;
+}
+
+#wrapper {
+	min-height: 100%;
+	margin-bottom: 100px;
+}
+
+body {
+	background-color: #399676;
+	color: #FFFFFF;
+}
+
+/*
+ *   Log In Page, Registration Page
+ */
+
+.input-form {
+	max-width: 600px;
+	padding: 0 0 26px;
+	margin: 60px auto 0;
+	font-family: 'Open Sans Condensed', sans-serif;
+	border: black 4px solid;
+	border-radius: 18px;	
+	text-align: center;
+}
+
+.input-form > h1 {
+	margin: 0 auto 18px;
+	font-size: 5em;
+	text-align: center;
+}
+
+.input-form label {
+	width: 100%;
+	font-weight: bold;
+	font-size: 2em;
+	float: left;		
+}
+
+.input-form input[type=text], .input-form input[type=email] {	
+	width: 360px;
+}
+
+.input-form input[type=submit] {
+	border-radius: 12px;
+	background-color: black;
+	border: white;
+	color: white;
+	font-size: 1.6em;
+}
+
+.input-form form {
+	margin: 0 auto;
+	max-width: 400px;
+}
+
+.input-form a {
+	color: #FFF;
+	font-size: 1.8em;	
+}
+
+.input-form a:visited {
+	color: #FFF;
+}
+
+.input-form #register-message {
+	margin: 0 auto 30px;
+	text-align: center;
+	background-color: #10C2B9;
+	border-radius: 15px;
+	font-size: 1.6em;
+}
+
+#login-messsage {
+	max-width: 600px;
+	text-align: center;
+	background-color: #10C2B9;
+	border-radius: 15px;
+	margin: 60px auto 0;
+}
+
+/*
+ *   User Account Page (user.php)
+ */
+
+.user {
+	font-size: 1.6em;
+}
+
+.user h1 {	
+	font-family: 'Open Sans Condensed', sans-serif;
+	display: inline-block;
+	float: left;
+	margin: 10px;
+	font-size: 1.8em;
+	padding: 10px;
+}
+
+.user nav {
+	display: inline-block;
+	float: right;
+	margin: 10px;
+}
+
+.user ul {
+	margin: 0;	
+}
+
+.user nav li {
+	float: left;
+	padding: 10px 1em;
+}
+
+.user li a {
+	text-decoration: none;
+	color: #FFF;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 1.6em;
+}
+
+.user hr {
+	clear: both;
+	border-color: #000000;
+}
+
+#user-details {
+	width: 50%;
+	margin: 0 auto;
+	font-family: 'Open Sans Condensed', sans-serif;
+	border: black 4px solid;
+	border-radius: 12px;
+	background-color: black;
+	margin-bottom: 140px;
+}
+
+#user-details #user-header {
+	border: 1px solid #B30452;
+	background-color: #B30452;
+	border-radius: 12px;
+	height: auto;
+	padding: 1px 0;
+}
+
+#user-details h1, h2 {
+	margin-left: 50px; 
+	font-size: 2.4em;
+}
+
+#user-details #get-quote {	
+	background-color: #3B95B3;
+	border: 1px solid #3B95B3;
+	border-radius: 12px;
+	height: 180px; 
+}
+
+#user-details #get-quote input[type=text] {
+	width: 250px;
+	display: inline-block;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	margin-left: 50px;
+	margin-right: 10px;	
+}
+
+#user-details #get-quote input[type=submit] {
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 30px;
+	border-radius: 12px;
+	background-color: black;
+	border: white;
+	color: white;
+	font-size: 1.2em;
+	float: none;
+}
+
+#user-details #get-quote p {	
+	margin-top: 10px;
+	margin-bottom: 0;
+	margin-left: 50px;
+	margin-right: 0px;	
+	width: auto;	
+	font-size: 1.8em;
+	font-weight: bold;	
+}
+
+
+#user-details #stock-purchase {
+	background-color: #7474B0;
+	border: 1px solid #7474B0;
+	border-radius: 12px;
+	height: 180px;
+}
+
+#user-details #stock-purchase input[type=text] {
+	width: 250px;
+	display: inline-block;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	margin-left: 50px;
+	margin-right: 10px;	
+	
+}
+
+#user-details #stock-purchase input[type=submit] {
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-radius: 12px;
+	background-color: black;
+	border: white;
+	color: white;
+	font-size: 1.2em;
+	float: none;
+}
+
+#user-details #stock-purchase p {
+	margin-top: 10px;
+	margin-bottom: 0;
+	margin-left: 50px;
+	margin-right: 0px;	
+	width: auto;	
+	font-size: 1.8em;
+	font-weight: bold;		
+}
+
+
+
+
+#user-details #stock-sell {	
+	background-color: #DB9232;
+	border: 1px solid #DB9232;
+	border-radius: 12px;
+	height: 180px; 
+}
+
+#user-details #stock-sell input[type=text] {
+	width: 250px;
+	display: inline-block;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	margin-left: 50px;
+	margin-right: 10px;	
+}
+
+#user-details #stock-sell input[type=submit] {
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 30px;
+	border-radius: 12px;
+	background-color: black;
+	border: white;
+	color: white;
+	font-size: 1.2em;
+	float: none;
+}
+
+#user-details #stock-sell p {	
+	margin-top: 10px;
+	margin-bottom: 0;
+	margin-left: 50px;
+	margin-right: 0px;	
+	width: auto;	
+	font-size: 1.8em;
+	font-weight: bold;	
+}
+
+/*
+ *   Erorr Page
+ */
+
+#error-message {
+	font-family: 'Open Sans Condensed', sans-serif;
+	text-align: center;
+	font-size: 2em;
+}
+
+#error-message a {
+	font-family: 'Open Sans Condensed', sans-serif;
+	color: #fff;
+	text-decoration:none;
+	font-size: 1.6em; 
+}
+
+/*
+ *   Portfolio Table
+ */
+
+#portfolio-table {
+	margin: 50px auto;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 1.8em;
+	text-align: center;
+}
+
+#portfolio-table th, td {
+	padding: 10px;	
+}
+
+#portfolio-table th {
+	background-color: #6C756C;
+}
+
+#portfolio-table tr {
+	background-color: #9AA69B;
+}
+
+#user-assets {
+	width: 400px;
+	background-color: #9AA69B;
+	margin: 20px auto;
+	outline: 1px black solid;
+	text-align: center;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 1.8em;
+}
+
+#user-assets p {
+	
+}
+
+/*
+ *   Footer
+ */
+footer {
+	clear: both;
+	height: 100px;
+	margin-top: -100px;	
+	background-color: #439460;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 1.4em;
+}
+
