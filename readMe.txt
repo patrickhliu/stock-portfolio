@@ -1,5 +1,5 @@
-CS75 Project 1 from Harvard Summer Extension 2012 (Free Open Courseware)
-http://cs75.tv/2012/summer/
+Project 1 from Harvard CS75
+http://cdn.cs75.net/2012/summer/projects/1/
 
 Project Details:
 Create a website where users can register an account to...
