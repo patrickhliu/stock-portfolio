@@ -13,5 +13,10 @@ All new users start with $10,000 in their account balance.
 Languages: HTML / CSS / jQuery / PHP / SQL
 3rd party: yahoo stock lookup
 
+"finance.sql" contains the database w/ 3 tables: 
+1) portfolio table - store information on a user's portfolio
+2) stocks - store information on all stocks that are looked up
+3) users - store information for each account holder
+
 Needed Improvements: 
 - Forget Password Link doesn't do anything yet
