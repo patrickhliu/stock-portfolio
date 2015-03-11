@@ -13,7 +13,7 @@
         }
         
         else if (  $pass1 !== $pass2 ) {  // make sure both passwords match
-            $errorMsg = '<p>Error: The two passwords don\'t match. Please try again...</p>';
+            $errorMsg = "<p>ERROR:<br/>The two passwords do not match.<br/>Please try again...</p>";
             return false;                      // return false to indicate this check failed
         }
         // verify password format: at least 1 uppercase letter, at least 1 lower case letter, at least 1 number
@@ -36,7 +36,6 @@
         $pass2 = $_POST['pw-change-2'];
         $hashPass = myCrypt($_POST['pw-change-1']);                     // hash the new password, to store in database
 
-        
         // if new password format is bad, user will need to fill out form again.
         // the form uses this string as it's action attribute.  It has a $_GET variable set.
         $handlerURL = '?page=changedone.php&email='.$userEmail; 
@@ -65,16 +64,24 @@
 
             <section class = "input-form">
                 <h1>Change Password: <?php echo $userEmail; ?></h1>
-                    <form class="pw-change-form" action=<?php echo $handlerURL; ?> method="POST">
+                    <form class="pw-change-form" action=<?php echo $handlerURL; ?> method="POST">           
                         <div>
-                            <label for:"pw-change-1">Password:</label>
+                            <label for:"pw-change-1">New Password:</label>
                             <input type="password" name="pw-change-1" id="pw-change-1" placeholder='Enter new password'/>
                         </div>
                         <div>
-                            <label for:"pw-change-2">Password:</label>
+                            <label for:"pw-change-2">Confirm New Password:</label>
                             <input type="password" name="pw-change-2" id="pw-change-2" placeholder='Confirm new password'/>
                         </div>
-                        <input type="submit" name="pw-change-submit" value="Change PW"/>        
+                        <input type="submit" name="pw-change-submit" value="Submit"/>       
+                        <p>Password Requirements:</p>
+                        <ul>
+                            <li>Contain at least 1 lower case letter</li>
+                            <li>Contain at least 1 upper case letter</li>
+                            <li>Contain at least 1 number</li>
+                            <li>Be at least 6 characters in length</li>
+                            <li>No spaces allowed</li>
+                        </ul>
                     </form>
             </section>
 <?php

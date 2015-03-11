@@ -50,7 +50,7 @@ class Register {
         }
         else if (  $post['password'] != $post['password2'] ) {  // if the two submitted pw's don't match...
             $this->error_message =          // set an error message
-                "<p>ERROR: The two passwords do not match. Please try again...</p>";
+                "<p>ERROR:<br/>The two passwords do not match.<br/>Please try again...</p>";
             return false;                   // return false to indicate this check failed
         }
         // verify password format: at least 1 uppercase letter, at least 1 lower case letter, at least 1 number

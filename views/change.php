@@ -34,14 +34,22 @@ change.php
 				<h1>Change Password: <?php echo $userEmail; ?></h1>
 					<form class="pw-change-form" action=<?php echo $handlerURL; ?> method="POST">			
 						<div>
-							<label for:"pw-change-1">Password:</label>
+							<label for:"pw-change-1">New Password:</label>
 							<input type="password" name="pw-change-1" id="pw-change-1" placeholder='Enter new password'/>
 						</div>
 						<div>
-							<label for:"pw-change-2">Password:</label>
+							<label for:"pw-change-2">Confirm New Password:</label>
 							<input type="password" name="pw-change-2" id="pw-change-2" placeholder='Confirm new password'/>
 						</div>
-						<input type="submit" name="pw-change-submit" value="Change PW"/>		
+						<input type="submit" name="pw-change-submit" value="Submit"/>		
+						<p>Password Requirements:</p>
+				        <ul>
+				            <li>Contain at least 1 lower case letter</li>
+				            <li>Contain at least 1 upper case letter</li>
+				            <li>Contain at least 1 number</li>
+				            <li>Be at least 6 characters in length</li>
+				            <li>No spaces allowed</li>
+				        </ul>
 					</form>
 			</section>
 <?php
