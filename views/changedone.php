@@ -1,5 +1,5 @@
 <?php
-	$db = new Database;
+    $db = new Database;
     $errorMsg;              // error message to display on user mistake
 
     // To change a password, the user has to type in the new password twice.

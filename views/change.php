@@ -7,62 +7,62 @@ change.php
     This page verifies the reset key, and then shows user a form where they can change their password.
 ***************************************************************************************************/
 
-	$db = new Database;
-	
-	// this branch is when the user first lands on page after clicking on the link in the email that was sent to them...
-	// the link creates a get request with parameters email & reset-key and this branch verifies that reset key
-	if ( isset($_GET['reset-key'])  ) {
-		$userEmail   = $_GET['email'];						// extract email from $_GET
-		$userResetKey = $_GET['reset-key'];					// extract reset key from $_GET
-		$handlerURL = '?page=changedone.php&email='.$userEmail;	
+    $db = new Database;
+    
+    // this branch is when the user first lands on page after clicking on the link in the email that was sent to them...
+    // the link creates a get request with parameters email & reset-key and this branch verifies that reset key
+    if ( isset($_GET['reset-key'])  ) {
+        $userEmail   = $_GET['email'];                      // extract email from $_GET
+        $userResetKey = $_GET['reset-key'];                 // extract reset key from $_GET
+        $handlerURL = '?page=changedone.php&email='.$userEmail; 
 
-		// Verify that user's email is in the database, if so the get the database's reset key value
-		$db->prepare("SELECT reset_key FROM users WHERE email=?", [$userEmail]);
-		$db->execute();
-		$resultSet = $db->fetchRow();
-		$dbResetKey = $resultSet['reset_key'];
-		
-		// compare the database's reset key to the user's reset key
-		// if they match, set the database reset key column to NULL.  
-		// Once NULL, the key in the email becomes "expired" and that email link is no longer valid.
-		// and display the form where the user can actually change their password
-		if ( $userResetKey === $dbResetKey ) {
-			$db->prepare(  "UPDATE users SET reset_key=? WHERE email=?", [NULL, $userEmail]  );
-			$db->execute();
+        // Verify that user's email is in the database, if so the get the database's reset key value
+        $db->prepare("SELECT reset_key FROM users WHERE email=?", [$userEmail]);
+        $db->execute();
+        $resultSet = $db->fetchRow();
+        $dbResetKey = $resultSet['reset_key'];
+        
+        // compare the database's reset key to the user's reset key
+        // if they match, set the database reset key column to NULL.  
+        // Once NULL, the key in the email becomes "expired" and that email link is no longer valid.
+        // and display the form where the user can actually change their password
+        if ( $userResetKey === $dbResetKey ) {
+            $db->prepare(  "UPDATE users SET reset_key=? WHERE email=?", [NULL, $userEmail]  );
+            $db->execute();
 ?>
-			<section class = "input-form">
-				<h1>Change Password: <?php echo $userEmail; ?></h1>
-					<form class="pw-change-form" action=<?php echo $handlerURL; ?> method="POST">			
-						<div>
-							<label for:"pw-change-1">New Password:</label>
-							<input type="password" name="pw-change-1" id="pw-change-1" placeholder='Enter new password'/>
-						</div>
-						<div>
-							<label for:"pw-change-2">Confirm New Password:</label>
-							<input type="password" name="pw-change-2" id="pw-change-2" placeholder='Confirm new password'/>
-						</div>
-						<input type="submit" name="pw-change-submit" value="Submit"/>		
-						<p>Password Requirements:</p>
-				        <ul>
-				            <li>Contain at least 1 lower case letter</li>
-				            <li>Contain at least 1 upper case letter</li>
-				            <li>Contain at least 1 number</li>
-				            <li>Be at least 6 characters in length</li>
-				            <li>No spaces allowed</li>
-				        </ul>
-					</form>
-			</section>
+            <section class = "input-form">
+                <h1>Change Password: <?php echo $userEmail; ?></h1>
+                    <form class="pw-change-form" action=<?php echo $handlerURL; ?> method="POST">           
+                        <div>
+                            <label for:"pw-change-1">New Password:</label>
+                            <input type="password" name="pw-change-1" id="pw-change-1" placeholder='Enter new password'/>
+                        </div>
+                        <div>
+                            <label for:"pw-change-2">Confirm New Password:</label>
+                            <input type="password" name="pw-change-2" id="pw-change-2" placeholder='Confirm new password'/>
+                        </div>
+                        <input type="submit" name="pw-change-submit" value="Submit"/>       
+                        <p>Password Requirements:</p>
+                        <ul>
+                            <li>Contain at least 1 lower case letter</li>
+                            <li>Contain at least 1 upper case letter</li>
+                            <li>Contain at least 1 number</li>
+                            <li>Be at least 6 characters in length</li>
+                            <li>No spaces allowed</li>
+                        </ul>
+                    </form>
+            </section>
 <?php
-		}
-		else { // else means the key is invalid, meaning the link in the email has "expired"
+        }
+        else { // else means the key is invalid, meaning the link in the email has "expired"
 ?>
-			<h2 id="form-response-message">    
-            	<p>ERROR: You provided an invalid key.</p>
-            	<p>Please make another request to reset your password.</p>
-            	<a href="?page=reset.php">>> Reset Password</a>
-			</h2>
+            <h2 id="form-response-message">    
+                <p>ERROR: You provided an invalid key.</p>
+                <p>Please make another request to reset your password.</p>
+                <a href="?page=reset.php">>> Reset Password</a>
+            </h2>
 <?php
-		}
-	}
+        }
+    }
 
 ?>

@@ -1,4 +1,4 @@
-/**		http://nicolasgallagher.com/micro-clearfix-hack/
+/**     http://nicolasgallagher.com/micro-clearfix-hack/
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
  *    contenteditable attribute is included anywhere else in the document.
@@ -28,250 +28,250 @@
 /********** MY CSS **********/
 
 html, body {
-	height: 100%;
-	font-family: open sans condensed;
+    height: 100%;
+    font-family: open sans condensed;
 }
 
 #wrapper {
-	min-height: 100%;
-	margin-bottom: 160px;
+    min-height: 100%;
+    margin-bottom: 160px;
 }
 
 body {
-	background-color: #399676;
-	color: #FFFFFF;
+    background-color: #399676;
+    color: #FFFFFF;
 }
 
 body header.proj-title {
-	background-color: #28755B;
-	padding: 20px 0;
+    background-color: #28755B;
+    padding: 20px 0;
 }
 
 body header.proj-title h1 {
-	text-align: center;
-	font-size: 2.8em;
-	margin: 0;
+    text-align: center;
+    font-size: 2.8em;
+    margin: 0;
 }
 
 input[type='submit'] {
-	width: 120px;
-	display: block;
-	margin: 10px auto;
-	border-radius: 12px;
-	background-color: black;
-	color: white;
-	font-size: 1.2em;
-	border: white;
-	padding: 6px;
+    width: 120px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 12px;
+    background-color: black;
+    color: white;
+    font-size: 1.2em;
+    border: white;
+    padding: 6px;
 }
 
 /* .input-form form --> Login / Registration / Reset PW Forms */
-.input-form {	
-	width: 960px;
-	margin: 0 auto;
-	padding-bottom: 100px;
+.input-form {   
+    width: 960px;
+    margin: 0 auto;
+    padding-bottom: 100px;
 }
 
 .input-form h1 {
-	margin: 0 auto;
-	text-align: center;
-	padding: 10px 0;
-	font-size: 3.6em;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 3.6em;
 }
 
 .input-form form div {
-	width: 300px;
-	margin: 0 auto;
-	padding: 4px 0;
+    width: 300px;
+    margin: 0 auto;
+    padding: 4px 0;
 }
 
 .input-form form div input {
-	display: block;
-	width: 250px;
-	margin: 10px auto;
+    display: block;
+    width: 250px;
+    margin: 10px auto;
 }
 
 .input-form form div label {
-	display: block;
-	width: 250px;
-	margin: 0 auto;
-	font-size: 2em;
+    display: block;
+    width: 250px;
+    margin: 0 auto;
+    font-size: 2em;
 }
 
 .input-form form h5 {
-	width: 300px;
-	text-align: center;
-	margin: 0 auto;
-	padding: 10px 0;
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px 0;
 }
 
 .input-form form p {
-	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 10px;
-	font-size: 1.6em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.6em;
 }
 
 .input-form form ul {
-	width: 280px;
-	margin: 0 auto;
-	font-size: 1.2em;
+    width: 280px;
+    margin: 0 auto;
+    font-size: 1.2em;
 }
 
 .input-form form ul li {
-	padding: 4px 0;
-	font-size: 1.2em;
+    padding: 4px 0;
+    font-size: 1.2em;
 }
 
 .input-form form h5 {
-	font-size: 1.6em;
+    font-size: 1.6em;
 }
 
 .input-form form h5 a:link, .input-form form h5 a:visited {
-	color: #06328A;
+    color: #06328A;
 }
 
 /* Messages to display after registration, password reset */
 #form-response-message {
-	width: 960px;
-	margin: 16px auto;
-	text-align: center;
+    width: 960px;
+    margin: 16px auto;
+    text-align: center;
 }
 
-#form-response-message p {	
-	font-size: 1.8em;
-	padding: 8px 0;
-	color: #B6C8E0;
-	text-align: center;		
-	margin: 0;
+#form-response-message p {  
+    font-size: 1.8em;
+    padding: 8px 0;
+    color: #B6C8E0;
+    text-align: center;     
+    margin: 0;
 }
 
 #form-response-message a:link, #form-response-message a:visited  {
-	color: #154D96;
-	font-size: 1.6em;
+    color: #154D96;
+    font-size: 1.6em;
 }
 
 /* User account page main */
 header.user {
-	border-bottom: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 header.user h1 {
-	display: inline-block;
-	font-size: 2.8em;
-	margin: 0;
-	margin-left: 30px;
+    display: inline-block;
+    font-size: 2.8em;
+    margin: 0;
+    margin-left: 30px;
 }
 
 header.user nav {
-	margin-left: 30px;
+    margin-left: 30px;
 }
 
 header.user nav ul {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 header.user nav ul li {
-	display: inline-block;
-	padding: 10px;
-	font-size: 2.6em;
+    display: inline-block;
+    padding: 10px;
+    font-size: 2.6em;
 }
 
 header.user nav ul li a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 header.user nav ul li a:link {
-	color: white;
+    color: white;
 }
 
 header.user nav ul li a:visited {
-	color: white;
+    color: white;
 }
 
 table#portfolio-table {
-	display: block;
-	width: 450px;
-	margin: 30px auto;
+    display: block;
+    width: 450px;
+    margin: 30px auto;
 }
 
 table#portfolio-table th, table#portfolio-table td {
-	padding: 8px;
-	text-align: center;
-	font-size: 1.6em;
-	width: 150px;
-	border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+    font-size: 1.6em;
+    width: 150px;
+    border: 1px solid black;
 }
 
 #user-assets {
-	padding: 10px;
-	text-align: center;
-	font-size: 2.2em;
+    padding: 10px;
+    text-align: center;
+    font-size: 2.2em;
 }
 
 /* USER PAGE MAIN */
 #user-details #user-header {
-	width: 960px;
-	margin: 10px auto;
-	font-size: 1.2em;
-	text-align: center;
+    width: 960px;
+    margin: 10px auto;
+    font-size: 1.2em;
+    text-align: center;
 }
 
 #user-details form {
-	width: 960px;
-	margin: 0 auto;
+    width: 960px;
+    margin: 0 auto;
 }
 
 #user-details form div {
-	width: 340px;
-	margin: 0 auto;
+    width: 340px;
+    margin: 0 auto;
 }
 
 #user-details form  div p {
-	font-size: 1.8em;
-	text-align: center;
-	margin: 0;
-	padding: 8px 0;
+    font-size: 1.8em;
+    text-align: center;
+    margin: 0;
+    padding: 8px 0;
 }
 
 #user-details form div input[type='text'] {
-	display: block;
-	margin: 10px auto;
-	width: 300px;	
+    display: block;
+    margin: 10px auto;
+    width: 300px;   
 }
 
  /* Get Quote Div */
 #get-quote {
-	background-color: #1DCFBA;
-	padding: 0;
+    background-color: #1DCFBA;
+    padding: 0;
 }
 
 #get-quote .get-quote-error {
-	color: black;
-	margin: 10px 0;
+    color: black;
+    margin: 10px 0;
 }
 
  /* Buy Stock Div */
 #stock-purchase {
-	background-color: #CCA508;
-	padding: 0;
+    background-color: #CCA508;
+    padding: 0;
 }
 
 #stock-purchase .stock-purchase-error {
-	color: black;
-	margin: 10px 0;
+    color: black;
+    margin: 10px 0;
 }
 
  /* Sell Stock Div */
 #stock-sell {
-	background-color: #2086C9;
-	padding: 0;
+    background-color: #2086C9;
+    padding: 0;
 }
 
 #stock-sell .stock-sell-error {
-	color: black;
-	margin: 10px 0;
+    color: black;
+    margin: 10px 0;
 }
 
 /* Portfolio Page */
@@ -280,14 +280,14 @@ table#portfolio-table th, table#portfolio-table td {
 
 /* Footer */
 footer {
-	clear: both;
-	height: 100px;
-	margin-top: -100px;	
-	background-color: #28755B;	
-	font-size: 1.4em;
+    clear: both;
+    height: 100px;
+    margin-top: -100px; 
+    background-color: #28755B;  
+    font-size: 1.4em;
 }
 
 footer h3 {
-	padding: 8px;
+    padding: 8px;
 }
 

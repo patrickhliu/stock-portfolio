@@ -7,7 +7,7 @@ footer.php
 
 </div><!-- end wrapper -->
 <footer>
-	<h3>CS75 Project 1 - Stock Portfolio </h3>
+    <h3>CS75 Project 1 - Stock Portfolio </h3>
 </footer>
-	</body>
+    </body>
 </html>
