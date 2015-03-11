@@ -1,6 +1,8 @@
 <?php
-/*  This is the header file
- */
+/**************************************************************************************************
+header.php
+    The header for all pages
+***************************************************************************************************/
  ?>
 
 <!DOCTYPE html>
@@ -17,4 +19,8 @@
 		<script type="text/javascript" src="../script/script.js"></script>
 	</head>
 	<body>
+		<header class='proj-title'>
+			<h1>CS75 Project 1 - Stock Portfolio</h1>
+		</header>
+		
 		<div id="wrapper">

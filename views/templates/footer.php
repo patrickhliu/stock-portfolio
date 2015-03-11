@@ -1,12 +1,13 @@
 <?php
-/*  This is the footer file
- * 
- */
+/**************************************************************************************************
+footer.php
+    The footer for all pages
+***************************************************************************************************/
  ?>
 
 </div><!-- end wrapper -->
 <footer>
-	<h3>CS75 Project 1: Finance </h3>
+	<h3>CS75 Project 1 - Stock Portfolio </h3>
 </footer>
 	</body>
 </html>

@@ -1,9 +1,12 @@
-// jquery code to put cursor focus on the first text input field of a page
+/**************************************************************************************************
+script.js
+    jQuery to automatically place mouse cursor on the first blank field of a form
+***************************************************************************************************/
 
 $(document).ready(function() {
-    if ( $("input:text:visible:first").val() ==="" ) {
-        $("input:text:visible:first").focus();  
-    }   
+    if ( $("input:visible:first").val() === "" ) {
+         $("input:visible:first").focus();  
+    } 
 }); 
 
 

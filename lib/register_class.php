@@ -1,104 +1,118 @@
 <?php
-/*
- *  Class definition for Register.
- *  It handles the database logic for when a user wants to register a new account
- *
- */
-
+/**************************************************************************************************
+register_class.php
+    A class definition for user registration.
+***************************************************************************************************/
 class Register {
-    public  $error_message;
-    public  $good_message;
-    private $table_name = 'users';
+    private $error_message;                 // create an error message to display
+    private $table_name = 'users';          // sql table
+    private $status = false;                // initialize as false; set to true to indicate that database checks pass & the user is registered
     
-//  The constructor takes...
-//  1) A $_POST array containing the user's input from the registration form
-//  2) A $db object that was instantiated from registration page.   
-    public function __construct ($post, $db) {                                      
+// Constructor Function
+// arguments are $_POST (user name, email, password to register & $db object)
+    public function __construct ($post, $db) {                                     
         
-        foreach($post as $index=>$value) {                                          // escape any html tags that are input by user & trim off lead/trailing whitespace
-            $post[$index] = trim(  htmlspecialchars( $post[$index] )  );
+        // iterate through the user's info in $_POST
+        foreach($post as $index=>$value) {                                          
+            $post[$index] = trim(  htmlspecialchars( $post[$index] )  );    // remove whitespace, html code will become a string
         }
         
-        if ( isset($post['submit']) ) {                                             // remove 'submit' variable from $post array, it's not needed at this point
+        if ( isset($post['submit']) ) { //remove $_POST['submit'] (variable for the registration form submit button)
             unset($post['submit']);
         }   
         
-// If all 3 functions return true, the user has been added succesfully.  
-// Return a "good" message to display that will tell the user the registration was a success.
-// If any function fails, return a "bad" message that indicates registration failed.        
-        if( $this->does_form_validate($post) AND $this->does_user_exist($post, $db) AND $this->insert_user($post, $db) ) {          
-            $this->good_message = "Thank You! <br> Your account has been registered !";
-            return $this->good_message;
-        }       
-        else {
-            return $this->error_message;
-        }       
+// if these 3 checks pass (return true), then set status = true to indicate successful registration
+        if( $this->does_form_validate($post) AND $this->does_user_exist($post, $db) ) {          
+            if ( $this->insert_user($post, $db) ) {
+                $this->status = true;
+            }           
+        }
     }
 
-//  This function verifies the following for the user's input 
-//  1) no empty fields 
-//  2) two passwords match 
+//  Getter method to return the object's private properties
+    public function getProperty($property) {
+        if(property_exists($this, $property)) {
+            return $this->$property;
+        }
+        return false;
+    }
+
+//  does_form_validate() verifies the following...
+//  1) user did not submit any empty fields
+//  2) the two passwords submitted by user match 
 //  3) correct password format 
-//  4) correct email format.
+//  4) correct email format
     public function does_form_validate($post) {
-        if(  fieldsEmpty($post)  ) {
-            $this->error_message = "ERROR: <br> One or more fields are blank.<br> Please try again...";
-            return false;
+        if(  fieldsEmpty($post)  ) {        // fieldsEmpty() is a helper function, if it finds a blank...
+            $this->error_message =          // set an error message
+                "<p>ERROR: A field was left blank. Please try again...</p>";
+            return false;                   // return false to indicate this check failed
         }
-        else if (  $post['password'] != $post['password2'] ) {
-            $this->error_message = "ERROR: <br> The two passwords do not match. <br>Please try again...";
-            return false;
+        else if (  $post['password'] != $post['password2'] ) {  // if the two submitted pw's don't match...
+            $this->error_message =          // set an error message
+                "<p>ERROR: The two passwords do not match. Please try again...</p>";
+            return false;                   // return false to indicate this check failed
         }
+        // verify password format: at least 1 uppercase letter, at least 1 lower case letter, at least 1 number
+        // and at least 6 characters long.  If password fails any of the criteria...
         else if (  !(preg_match("/[A-Z+]/", $post['password'])) OR !(preg_match("/[a-z+]/", $post['password'])) OR 
                    !(preg_match("/[0-9+]/", $post['password'])) OR (strlen($post['password']) < 6) OR 
                    (preg_match("/\s/", $post['password'])) ) {
-            $this->error_message = "ERROR: <br>  The format of the password is wrong. <br>Please try again...";
-            return false;
+            $this->error_message =          // set an error message
+                "<p>ERROR: The format of the password is wrong. Please try again...</p>";
+            return false;                   // return false to indicate this check failed
         }
+        // verify email format: name@something.com -or- name@something.abc.com are acceptable
+        // if this check fails...
         else if (  !(preg_match("/^[a-zA-Z0-9._\-+]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/", $post['email']))  AND 
                    !(preg_match("/^[a-zA-Z0-9._\-+]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z]+$/", $post['email']))  ) {
-            $this->error_message = "ERROR: <br>  The format of the email is wrong. <br>Please try again...";
-            return false;
+            $this->error_message =          // set an error message
+                "<p>ERROR: The format of the email is wrong. Please try again...</p>";
+            return false;                   // return false to indicate this check failed
         }
         else {
-            return true;
+            return true;    // if everything passes, return true to indicate all these checks passed
         }       
     }
-
-//  This function verifies that the registration email has not already been registered.
+//  does_user_exist() verifies that the registration email has not already been registered.
     public function does_user_exist($post, $db) {               
-        $db->prepare("SELECT id FROM $this->table_name WHERE email=?", [  $post['email']  ]);       
+        $db->prepare("SELECT pri FROM $this->table_name WHERE email=?", [  $post['email']  ]);       
         $db->execute();
         
+        // if email isn't 0, it's already in the database and registered
         if(  $db->rowCount() != 0 ) {           
-            $this->error_message = "ERROR: <br>  Email address is already registered. <br> Please try again...";                    
-            return false;
+            $this->error_message = "<p>ERROR: Email address is already registered. Please try again...</p>";                    
+            return false;       // set error message & return false to indicate this check failed
         }
         else {
-            return true;
+            return true;        // else email not found in database, return true to indicate this check passed
         }
     }
-
-//  This function will create record of user in database
+//  This function will create record of the user in database
     public function insert_user($post, $db) {
-        // if two other checks went ok, get rid of password 2 as it's no longer needed.  
-        // Not sure if this is bad practice, password2 is a needed variable in the method above.
+        // if two other checks went ok, get rid of password2
         if ( isset($post['password2']) ) {                          
                 unset($post['password2']);
         }       
         
-        $post['password'] = myCrypt($post['password']);             // blowfish hash the password
-        $post['registration_date'] = whatDay();                     // get current date/time (west coast US)
-            
-        $q = "INSERT INTO " . $this->table_name . "(" . implode(", " , array_keys($post)) . ") VALUES ( ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE duplicate = 1";      
+        // myCrypt() is a helper function.  will blowfish hash the submitted password
+        $post['password'] = myCrypt($post['password']);             
+
+        // whatDay() is a helper function.  will retrieve current data/time to store in database as registration date.
+        $post['registration_date'] = whatDay();                     
         
-        $db->prepare($q, array_values($post) );                     // PDO prepare & bindParam
-        $db->execute();                                             // PDO execute
+        // insert all post values into the database
+        $q = "INSERT INTO " . $this->table_name . "(" . implode(", " , array_keys($post)) . ") 
+            VALUES ( ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE duplicate = 1";      
+        $db->prepare($q, array_values($post) );                     
+        $db->execute();                                             
         
-        if($db->rowCount()) {                                       // Verify PDO rowCount, if successful it should be 1
-            return true;
+        // Verify PDO rowCount, if it's 1, than SQL INSERT was successful...
+        if( $db->rowCount() !== 0) {                                       
+            return true;    // return true to indicate this check passed
         }
         
-        return false;                                               // Else return false if the rowCount is 0
+        // Else Insert failed, return false to indicate this check failed
+        return false;                                               
     }
 }# END class definition
