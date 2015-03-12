@@ -49,7 +49,7 @@ body header.proj-title {
 
 body header.proj-title h1 {
     text-align: center;
-    font-size: 2.8em;
+    font-size: 3.2em;
     margin: 0;
 }
 
@@ -96,7 +96,7 @@ input[type = "submit"] {
     margin: 0 auto;
     text-align: center;
     padding: 10px 0;
-    font-size: 3.6em;
+    font-size: 2.8em;
 }
 
 .input-form form div {
@@ -129,7 +129,7 @@ input[type = "submit"] {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 10px;
-    font-size: 1.6em;
+    font-size: 1.4em;
 }
 
 .input-form form ul {
@@ -159,11 +159,12 @@ input[type = "submit"] {
 }
 
 #form-response-message p {  
-    font-size: 1.8em;
+    font-size: 1.4em;
     padding: 8px 0;
-    color: #B6C8E0;
+    color: black;
     text-align: center;     
-    margin: 0;
+    margin: 0;    
+    color: #FFE3AA;
 }
 
 #form-response-message a:link, #form-response-message a:visited  {
@@ -173,7 +174,12 @@ input[type = "submit"] {
 
 /* Error / Success messages to display after registration, password reset (client side validation) */
 .client-form-reponse p {
-    color: #B6C8E0;
+    color: black;
+    background-color: #FFE3AA;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.6em;
 }
 
 /* User account page main */

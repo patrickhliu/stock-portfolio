@@ -16,19 +16,19 @@ changedone.php
         global $errorMsg;
 
         if(  empty($pass1) || empty($pass2) ) {        // make sure user filled in both password fields
-            $errorMsg = '<p>Error: A field was left blank. Please try again...</p>';
+            $errorMsg = '<p>ERROR:<br/>A field was left blank.';
             return false;                    // return false to indicate this check failed
         }
         
         else if (  $pass1 !== $pass2 ) {  // make sure both passwords match
-            $errorMsg = "<p>ERROR:<br/>The two passwords do not match.<br/>Please try again...</p>";
+            $errorMsg = "<p>ERROR:<br/>The two passwords do not match.</p>";
             return false;                      // return false to indicate this check failed
         }
         // verify password format: at least 1 uppercase letter, at least 1 lower case letter, at least 1 number
         // at least 6 characters long, & 0 spaces.
         else if (  !(preg_match("/[A-Z+]/", $pass1)) OR !(preg_match("/[a-z+]/", $pass1)) OR 
                    !(preg_match("/[0-9+]/", $pass1)) OR (strlen($pass1) < 6) OR (preg_match("/\s/", $pass1)) ) {
-            $errorMsg = '<p>Error: Password format is incorrect. Please try again...</p>';
+            $errorMsg = '<p>ERROR:<br/>Password format is incorrect.</p>';
             return false;                   // return false to indicate this check failed
         }
         else {

@@ -58,7 +58,7 @@ $(document).ready(function() {
         }
         // else the email format is incorrect...
         else {
-                $('.reg-form-email span').html('<p>Warning: Invalid email address</p>'); // set error message
+                $('.reg-form-email span').html('<p>Warning:<br/> Invalid email address</p>'); // set error message
                 registerEmailFlag = false;                                               // set flag to false
         }
     })
@@ -79,7 +79,7 @@ $(document).ready(function() {
             registerPasswordFlag = true;                 // set flag to true
         }
         else {                                           // else format of password 1 is wrong...
-            $('.reg-form-password span').html('<p>Warning: Invalid password</p>');    // set error message
+            $('.reg-form-password span').html('<p>Warning:<br/>Invalid password</p>');    // set error message
             registerPasswordFlag = false;                                             // set flag to false
         }
     })
@@ -99,7 +99,7 @@ $(document).ready(function() {
             registerPassword2Flag = true;               // set flag to true
         }
         else {                                          // else format of password 2 is wrong...
-            $('.reg-form-password2 span').html('<p>Warning: Invalid password</p>');   // set error message
+            $('.reg-form-password2 span').html('<p>Warning:<br/>Invalid password</p>');   // set error message
             registerPassword2Flag = false;                                            // set flag to false
         }   
     })
@@ -114,21 +114,27 @@ $(document).ready(function() {
             event.preventDefault();                                                                  
             $('.reg-form-submit-msg span').html('<p>Error:<br/>A field has been left blank</p>');    
         }
-        //  if any of email / pw1 / pw2 are in wrong format...don't submit form & set error message
-        else if ( !registerEmailFlag || !registerPasswordFlag || !registerPassword2Flag) {
+        //  if any of email has wrong format...don't submit form & set error message
+        else if ( !registerEmailFlag ) {
             //console.log('2=====================');
             event.preventDefault();                                                                  
-            $('.reg-form-submit-msg span').html('<p>Error:<br/>Email/Password has incorrect format</p>');   
+            $('.reg-form-submit-msg span').html('<p>Error:<br/>Email has incorrect format</p>');   
+        }
+        //  if any of pw1 / pw2 are in wrong format...don't submit form & set error message
+        else if ( !registerPasswordFlag || !registerPassword2Flag) {
+            //console.log('3=====================');
+            event.preventDefault();                                                                  
+            $('.reg-form-submit-msg span').html('<p>Error:<br/>Password has incorrect format</p>');   
         }
         // if password1 does not match password2...don't submit form & set error message
         else if ( registerPassword.val() !== registerPassword2.val() ) {
-            //console.log('3=====================');
+            //console.log('4=====================');
             event.preventDefault();
             $('.reg-form-submit-msg span').html('<p>Error:<br/>Passwords do not match</p>');    
         }
         // else all checks pass, submit the form to server and remove any output message
         else {
-            //console.log('4=====================');
+            //console.log('5=====================');
             //event.preventDefault();
             $('.reg-form-submit-msg span').html('');    
         }   
@@ -156,7 +162,7 @@ $(document).ready(function() {
             newPasswordFlag = true;                     // set flag true
         }
         else {                                          // else new password1 has wrong format...
-            $('.changepw-form-password span').html('<p>Warning: Invalid password</p>');   // set error message
+            $('.changepw-form-password span').html('<p>Warning:<br/>Invalid password</p>');   // set error message
             newPasswordFlag = false;                                                      // set flag false
         }
     })
@@ -176,7 +182,7 @@ $(document).ready(function() {
             newPassword2Flag = true;                     // set flag true
         }
         else {                                           // else new password2 has wrong format...
-            $('.changepw-form-password2 span').html('<p>Warning: Invalid password</p>');  // set error message
+            $('.changepw-form-password2 span').html('<p>Warning:<br/>Invalid password</p>');  // set error message
             newPassword2Flag = false;                                                     // set flag false
         }
     })
@@ -187,19 +193,19 @@ $(document).ready(function() {
         if ( newPassword.val() === '' || newPassword2.val() === '') {
             //console.log('1=====================');
             event.preventDefault();
-            $('.changepw-form-submit-msg span').html('<p>Error: A field has been left blank</p>');
+            $('.changepw-form-submit-msg span').html('<p>Error:<br/>A field has been left blank</p>');
         }
         //  if either new pw1 / new pw2 are in wrong format...don't submit form & set error message
         else if (!newPasswordFlag || !newPassword2Flag) {
             //console.log('2=====================');
             event.preventDefault();
-            $('.changepw-form-submit-msg span').html('<p>Error: Password format is incorrect</p>');
+            $('.changepw-form-submit-msg span').html('<p>Error:<br/>Password format is incorrect</p>');
         }
         // if new password1 does not match new password2...don't submit form & set error message
         else if (newPassword.val() !== newPassword2.val()) {
             //console.log('3=====================');
             event.preventDefault();
-            $('.changepw-form-submit-msg span').html('<p>Error: Passwords do not match</p>');
+            $('.changepw-form-submit-msg span').html('<p>Error:<br/>Passwords do not match</p>');
         }
         // else all checks pass, submit the form to server and remove any output message    
         else {
@@ -217,7 +223,7 @@ $(document).ready(function() {
     $('form[name="get-quote-form"]').submit(function(event) { 
         if ( quoteSym.val() === '' ) {                                // if blank
             event.preventDefault();                                   // don't submit
-            $('.get-quote-error').html('Warning: Enter a Symbol');    // show error message
+            $('.get-quote-error').html('Warning:<br/>Enter a Symbol');    // show error message
         }
     });
 
@@ -237,7 +243,7 @@ $(document).ready(function() {
             buyFlag = true;                             // set flag to true
         }
         else {                                          // else the quantity of stock to buy is invalid
-            $('.stock-purchase-error').html('Warning: Qty must be numeric');  // set error message
+            $('.stock-purchase-error').html('Warning:<br/>Qty must be numeric');  // set error message
             buyFlag = false;                                                  // set flag to false
         }
     })
@@ -246,11 +252,11 @@ $(document).ready(function() {
     $('form[name="buy-stock-form"]').submit(function(event) { 
         if ( buySym.val() === '' || buyQty.val() === '') {  // if either field is blank
             event.preventDefault();                   // don't submit, set an error message           
-            $('.stock-purchase-error').html('Error: A field is blank');
+            $('.stock-purchase-error').html('Error:<br/>A field is blank');
         }
         else if (!buyFlag) {                          // if the quantity has incorrect format (eg: not a number)
             event.preventDefault();                   // don't submit, set an error message    
-            $('.stock-purchase-error').html('Error: Pls enter numeric qty');
+            $('.stock-purchase-error').html('Error:<br/>Pls enter numeric qty');
         }       
         else {                                        // else submit to server and set any output messages to blank
             $('.stock-purchase-error').html('');    
@@ -273,7 +279,7 @@ $(document).ready(function() {
             sellFlag = true;                            // set flag to true
         }
         else {                                          // else sell qty is invalid
-            $('.stock-sell-error').html('Warning: Qty must be numeric');  // set error message
+            $('.stock-sell-error').html('Warning:<br/>Qty must be numeric');  // set error message
             sellFlag = false;                                             // set flag to false
         }
     })
@@ -282,11 +288,11 @@ $(document).ready(function() {
     $('form[name="sell-stock-form"]').submit(function(event) { 
         if ( sellSym.val() === '' || sellQty.val() === '') {  // if either field is blank
             event.preventDefault();                           // don't submit, set an error message           
-            $('.stock-sell-error').html('Error: A field is blank');
+            $('.stock-sell-error').html('Error:<br/>A field is blank');
         }
         else if (!sellFlag) {                          // if the quantity has incorrect format (eg: not a number)
             event.preventDefault();                    // don't submit, set an error message    
-            $('.stock-sell-error').html('Error: Pls enter numeric qty');
+            $('.stock-sell-error').html('Error:<br/>Pls enter numeric qty');
         }       
         else {                                        // else submit to server and set any output messages to blank
             $('.stock-sell-error').html('');    

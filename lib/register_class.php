@@ -43,12 +43,12 @@ class Register {
     public function does_form_validate($post) {
         if(  fieldsEmpty($post)  ) {        // fieldsEmpty() is a helper function, if it finds a blank...
             $this->error_message =          // set an error message
-                "<p>ERROR:<br/>A field was left blank. Please try again...</p>";
+                "<p>ERROR:<br/>A field was left blank.</p>";
             return false;                   // return false to indicate this check failed
         }
         else if (  $post['password'] != $post['password2'] ) {  // if the two submitted pw's don't match...
             $this->error_message =          // set an error message
-                "<p>ERROR:<br/>The two passwords do not match.<br/>Please try again...</p>";
+                "<p>ERROR:<br/>The two passwords do not match.</p>";
             return false;                   // return false to indicate this check failed
         }
         // verify password format: at least 1 uppercase letter, at least 1 lower case letter, at least 1 number
@@ -57,7 +57,7 @@ class Register {
                    !(preg_match("/[0-9+]/", $post['password'])) OR (strlen($post['password']) < 6) OR 
                    (preg_match("/\s/", $post['password'])) ) {
             $this->error_message =          // set an error message
-                "<p>ERROR:<br/>The format of the password is wrong. Please try again...</p>";
+                "<p>ERROR:<br/>The format of the password is wrong.</p>";
             return false;                   // return false to indicate this check failed
         }
         // verify email format: name@something.com -or- name@something.abc.com are acceptable
@@ -65,7 +65,7 @@ class Register {
         else if (  !(preg_match("/^[a-zA-Z0-9._\-+]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/", $post['email']))  AND 
                    !(preg_match("/^[a-zA-Z0-9._\-+]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z]+$/", $post['email']))  ) {
             $this->error_message =          // set an error message
-                "<p>ERROR:<br/>The format of the email is wrong. Please try again...</p>";
+                "<p>ERROR:<br/>The format of the email is wrong.</p>";
             return false;                   // return false to indicate this check failed
         }
         else {
@@ -79,7 +79,7 @@ class Register {
         
         // if email isn't 0, it's already in the database and registered
         if(  $db->rowCount() != 0 ) {           
-            $this->error_message = "<p>ERROR: Email address is already registered. Please try again...</p>";                    
+            $this->error_message = "<p>ERROR:<br/>Email address is already registered.</p>";                    
             return false;       // set error message & return false to indicate this check failed
         }
         else {

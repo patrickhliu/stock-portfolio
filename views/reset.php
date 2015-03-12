@@ -56,7 +56,7 @@ reset.php
         else {  // else means the email address isn't in the database, so display error message.
 ?>
             <h2 id="form-response-message">    
-                <p>ERROR: User Not Found. Please try again...</p>
+                <p>ERROR:<br/>User Not Found.</p>
             </h2>
 <?php       
             // display the reset password form
@@ -66,7 +66,7 @@ reset.php
     else if(isset($_POST['pw-reset-submit']) && fieldsEmpty($_POST)) {  // if any fields are empty, alert user...
 ?>
         <h2 id="form-response-message">    
-            <p>ERROR: A field was left blank. Please try again...</p>
+            <p>ERROR:<br/>A field was left blank.</p>
         </h2>
 <?php
         render('templates/reset-template');     // and display the reset password form again

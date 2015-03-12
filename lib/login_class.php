@@ -47,7 +47,7 @@ class Login extends Database {
     public function login_fields_ok($post) {
         if( fieldsEmpty($post) ) {      // fieldsEmpty() is a helper function, if it finds a blank...
             $this->error_message =      // set error message
-                "<p>ERROR: A field was left blank. Please try again...</p>";
+                "<p>ERROR:<br/>A field was left blank.</p>";
             return false;               // return false indicates that this check failed
         }
         return true;                    // else no blanks found, return true to indicate this check passed
@@ -74,13 +74,13 @@ class Login extends Database {
             
             // else the password's don't match, create a fail message
             // return false to indicate the authenticate() check failed
-            $this->error_message = "<p>ERROR: Authentication failure. Please try again...</p>";
+            $this->error_message = "<p>ERROR:<br/>Authentication failure.";
             return false;   
         }
 
         // else the email can't be found in the database, create a fail message
         // return false to indicate the authenticate() check failed
-        $this->error_message = "<p>ERROR: User not found. Please try again...</p>";
+        $this->error_message = "<p>ERROR:<br/>User not found.";
         return false;       
     }
 }
