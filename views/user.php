@@ -109,44 +109,50 @@ user.php
         <h1>Current Balance: <?php echo "$".  number_format(  $user->getProperty('balance'), 2, '.', ',' ) ; ?></h1>
     </div>    
         
-    <form action="?page=user.php" method="POST">
-            <div id="get-quote">
-                <p>Get Stock Quote:</p>
-                <input type="text"   name="symbol-get-quote" placeholder="Enter Stock Symbol...">
-                <input type="submit" name="submit-get-quote" value="Get Quote">
-                <p class='get-quote-error'>     
-                <?php 
-                    if(isset($quote_stock_msg)) {
-                         echo $quote_stock_msg;     // display the message for getting stock quotes
-                    }
-                ?>
-                </p>
-            </div> <!-- end get-quote -->
-            <div id="stock-purchase">
-                <p>Buy Stock:</p>
-                <input type="text"   name="symbol-purchase"  placeholder="Enter Stock Symbol...">
-                <input type="text"   name="qty-purchase"     placeholder="Enter # to purchase...">
-                <input type="submit" name="submit-purchase"  value="Buy">
-                <p class='stock-purchase-error'>     
-                <?php 
-                    if(isset($buy_stock_msg)) {
-                         echo $buy_stock_msg;       // display the message for buying stocks
-                    }
-                ?>
-                </p>
-            </div>
-            <div id="stock-sell">
-                <p>Sell Stock:</p>
-                <input type="text"   name="symbol-sell"  placeholder="Enter Stock Symbol...">
-                <input type="text"   name="qty-sell"     placeholder="Enter # to sell...">
-                <input type="submit" name="submit-sell"  value="Sell">
-                <p class='stock-sell-error'>     
-                <?php 
-                    if(isset($sell_stock_msg)) {
-                         echo $sell_stock_msg;      // display the message for selling stocks
-                    }
-                ?>
-                </p>
-            </div>
+    <form action="?page=user.php" method="POST" name='get-quote-form'>
+        <div id="get-quote">
+            <p>Get Stock Quote:</p>
+            <input type="text"   name="symbol-get-quote" placeholder="Enter Stock Symbol...">
+            <input type="submit" name="submit-get-quote" value="Get Quote">
+            <p class='get-quote-error'>     
+            <?php 
+                if(isset($quote_stock_msg)) {
+                    echo $quote_stock_msg;     // display the message for getting stock quotes
+                }
+            ?>
+            </p>
+        </div>
+    </form>
+
+    <form action="?page=user.php" method="POST" name='buy-stock-form'>
+        <div id="stock-purchase">
+            <p>Buy Stock:</p>
+            <input type="text"   name="symbol-purchase"  placeholder="Enter Stock Symbol...">
+            <input type="text"   name="qty-purchase"     placeholder="Enter # to purchase...">
+            <input type="submit" name="submit-purchase"  value="Buy">
+            <p class='stock-purchase-error'>     
+            <?php 
+                if(isset($buy_stock_msg)) {
+                    echo $buy_stock_msg;       // display the message for buying stocks
+                }
+            ?>
+            </p>
+        </div>
+    </form>
+
+    <form action="?page=user.php" method="POST" name='sell-stock-form'>
+        <div id="stock-sell">
+            <p>Sell Stock:</p>
+            <input type="text"   name="symbol-sell"  placeholder="Enter Stock Symbol...">
+            <input type="text"   name="qty-sell"     placeholder="Enter # to sell...">
+            <input type="submit" name="submit-sell"  value="Sell">
+            <p class='stock-sell-error'>     
+            <?php 
+                if(isset($sell_stock_msg)) {
+                    echo $sell_stock_msg;      // display the message for selling stocks
+                }
+            ?>
+            </p>
+        </div>
     </form>     
 </section>

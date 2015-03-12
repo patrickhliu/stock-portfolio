@@ -43,7 +43,7 @@ class Login extends Database {
         return false;
     }
 
-    // login_fields_ok() verifies user submitted a email & pw (no blanks)
+    // login_fields_ok() verifies user submitted both email & password (no blanks)
     public function login_fields_ok($post) {
         if( fieldsEmpty($post) ) {      // fieldsEmpty() is a helper function, if it finds a blank...
             $this->error_message =      // set error message

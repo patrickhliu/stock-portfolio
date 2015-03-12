@@ -28,7 +28,6 @@ class Register {
             }           
         }
     }
-
 //  Getter method to return the object's private properties
     public function getProperty($property) {
         if(property_exists($this, $property)) {
@@ -36,7 +35,6 @@ class Register {
         }
         return false;
     }
-
 //  does_form_validate() verifies the following...
 //  1) user did not submit any empty fields
 //  2) the two passwords submitted by user match 
@@ -45,7 +43,7 @@ class Register {
     public function does_form_validate($post) {
         if(  fieldsEmpty($post)  ) {        // fieldsEmpty() is a helper function, if it finds a blank...
             $this->error_message =          // set an error message
-                "<p>ERROR: A field was left blank. Please try again...</p>";
+                "<p>ERROR:<br/>A field was left blank. Please try again...</p>";
             return false;                   // return false to indicate this check failed
         }
         else if (  $post['password'] != $post['password2'] ) {  // if the two submitted pw's don't match...
@@ -59,7 +57,7 @@ class Register {
                    !(preg_match("/[0-9+]/", $post['password'])) OR (strlen($post['password']) < 6) OR 
                    (preg_match("/\s/", $post['password'])) ) {
             $this->error_message =          // set an error message
-                "<p>ERROR: The format of the password is wrong. Please try again...</p>";
+                "<p>ERROR:<br/>The format of the password is wrong. Please try again...</p>";
             return false;                   // return false to indicate this check failed
         }
         // verify email format: name@something.com -or- name@something.abc.com are acceptable
@@ -67,7 +65,7 @@ class Register {
         else if (  !(preg_match("/^[a-zA-Z0-9._\-+]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/", $post['email']))  AND 
                    !(preg_match("/^[a-zA-Z0-9._\-+]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z]+$/", $post['email']))  ) {
             $this->error_message =          // set an error message
-                "<p>ERROR: The format of the email is wrong. Please try again...</p>";
+                "<p>ERROR:<br/>The format of the email is wrong. Please try again...</p>";
             return false;                   // return false to indicate this check failed
         }
         else {
@@ -97,7 +95,6 @@ class Register {
         
         // myCrypt() is a helper function.  will blowfish hash the submitted password
         $post['password'] = myCrypt($post['password']);             
-
         // whatDay() is a helper function.  will retrieve current data/time to store in database as registration date.
         $post['registration_date'] = whatDay();                     
         

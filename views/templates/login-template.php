@@ -8,14 +8,16 @@ login-template.php
 <section class = "input-form">
         <h1>Login</h1>      
         <form action="?page=index.php" method="POST" name="login">      
-            <div>
+            <div class="login-form-email">
                 <label for:'email'>Email:</label>
-                <input type="text"     name="email"    id="email"    placeholder="Email">
+                <input type="email"     name="email"    id="email"    placeholder="Email">
+                <span class = 'client-form-reponse'></span>
             </div>
 
-            <div>
+            <div class="login-form-password">
                 <label for:'email'>Password:</label>
                 <input type="password" name="password" id="password" placeholder="Password">
+                <span class = 'client-form-reponse'></span>
             </div>          
 
             <input type="submit"   name="submit" value="Login">

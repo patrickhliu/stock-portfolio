@@ -34,7 +34,7 @@ html, body {
 
 #wrapper {
     min-height: 100%;
-    margin-bottom: 160px;
+    margin-bottom: 130px;
 }
 
 body {
@@ -53,7 +53,27 @@ body header.proj-title h1 {
     margin: 0;
 }
 
-input[type='submit'] {
+body header.proj-title h1 a:visited,
+body header.proj-title h1 a:link {
+    color: white;
+    text-decoration: none;
+}
+
+/* Footer */
+footer {
+    clear: both;
+    height: 100px;
+    margin-top: -100px; 
+    background-color: #28755B;  
+    font-size: 1.4em;
+}
+
+footer h3 {
+    padding: 8px;
+}
+
+/* All form submit buttons */
+input[type = "submit"] {
     width: 120px;
     display: block;
     margin: 10px auto;
@@ -69,7 +89,7 @@ input[type='submit'] {
 .input-form {   
     width: 960px;
     margin: 0 auto;
-    padding-bottom: 100px;
+    padding-bottom: 0px;
 }
 
 .input-form h1 {
@@ -131,7 +151,7 @@ input[type='submit'] {
     color: #06328A;
 }
 
-/* Messages to display after registration, password reset */
+/* Error / Success messages to display after registration, password reset (server side validation) */
 #form-response-message {
     width: 960px;
     margin: 16px auto;
@@ -151,6 +171,11 @@ input[type='submit'] {
     font-size: 1.6em;
 }
 
+/* Error / Success messages to display after registration, password reset (client side validation) */
+.client-form-reponse p {
+    color: #B6C8E0;
+}
+
 /* User account page main */
 header.user {
     border-bottom: 2px solid black;
@@ -158,13 +183,15 @@ header.user {
 
 header.user h1 {
     display: inline-block;
-    font-size: 2.8em;
-    margin: 0;
-    margin-left: 30px;
+    font-size: 2.4em;
+    margin: 0 0 0 40px;
+    padding: 12px;
 }
 
 header.user nav {
-    margin-left: 30px;
+    display: inline-block;
+    margin-right: 40px;
+    float: right;
 }
 
 header.user nav ul {
@@ -176,6 +203,7 @@ header.user nav ul li {
     display: inline-block;
     padding: 10px;
     font-size: 2.6em;
+    margin-left: 40px;
 }
 
 header.user nav ul li a {
@@ -273,21 +301,3 @@ table#portfolio-table th, table#portfolio-table td {
     color: black;
     margin: 10px 0;
 }
-
-/* Portfolio Page */
-
-
-
-/* Footer */
-footer {
-    clear: both;
-    height: 100px;
-    margin-top: -100px; 
-    background-color: #28755B;  
-    font-size: 1.4em;
-}
-
-footer h3 {
-    padding: 8px;
-}
-

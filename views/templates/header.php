@@ -20,7 +20,7 @@ header.php
     </head>
     <body>
         <header class='proj-title'>
-            <h1>CS75 Project 1 - Stock Portfolio</h1>
+            <h1><a href="?page=index.php">CS75 Project 1 - Stock Portfolio</a></h1>
         </header>
         
         <div id="wrapper">

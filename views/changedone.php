@@ -1,4 +1,12 @@
 <?php
+/**************************************************************************************************
+changedone.php
+    The page reponds to the POST request to change a user's password.
+    Verify the two passwords pass validation, then update the user's password
+    in the SQL table.  If validation fails, display an error and re-display the
+    form to change the password.
+***************************************************************************************************/
+
     $db = new Database;
     $errorMsg;              // error message to display on user mistake
 
@@ -56,35 +64,13 @@
         }
         else {  // else the check of the 2 passwords failed...
 
-            // display an error message & re-display the new password form
+        // display an error message & re-display the new password form
 ?>
             <h2 id="form-response-message">    
                 <?php echo $errorMsg; ?>
             </h2>
-
-            <section class = "input-form">
-                <h1>Change Password: <?php echo $userEmail; ?></h1>
-                    <form class="pw-change-form" action=<?php echo $handlerURL; ?> method="POST">           
-                        <div>
-                            <label for:"pw-change-1">New Password:</label>
-                            <input type="password" name="pw-change-1" id="pw-change-1" placeholder='Enter new password'/>
-                        </div>
-                        <div>
-                            <label for:"pw-change-2">Confirm New Password:</label>
-                            <input type="password" name="pw-change-2" id="pw-change-2" placeholder='Confirm new password'/>
-                        </div>
-                        <input type="submit" name="pw-change-submit" value="Submit"/>       
-                        <p>Password Requirements:</p>
-                        <ul>
-                            <li>Contain at least 1 lower case letter</li>
-                            <li>Contain at least 1 upper case letter</li>
-                            <li>Contain at least 1 number</li>
-                            <li>Be at least 6 characters in length</li>
-                            <li>No spaces allowed</li>
-                        </ul>
-                    </form>
-            </section>
 <?php
+            require_once(VIEW.'/templates/change-template.php');
         }
     }
 ?>

@@ -11,6 +11,7 @@ reset-template.php
             <div>
                 <label for:"pw-reset-email">Email:</label>
                 <input type="email" name="pw-reset-email" id="pw-reset-email" placeholder='Enter email'/>
+                <span class = 'client-form-reponse'></span>
             </div>
             <input type="submit" name="pw-reset-submit" value="Reset"/>     
         </form>
