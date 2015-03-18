@@ -22,5 +22,11 @@ header.php
         <header class='proj-title'>
             <h1><a href="?page=index.php">CS75 Project 1 - Stock Portfolio</a></h1>
         </header>
+
+        <noscript>
+            <div class="no-script">
+                <p>Note: Please enable Javascript</p>
+            </div>
+        </noscript>
         
         <div id="wrapper">
