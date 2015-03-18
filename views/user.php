@@ -15,8 +15,11 @@ user.php
 
         // On instantiation, the stock constructor will get the price from Yahoo.  If a wrong symbol was entered, 
         // Yahoo returns a 'n/a' in the CSV file and the stock object will set last_price to error.
-        if ($quote_stock->getProperty('last_price') === 'error') {      // Check if an incorrect stock symbol was enetered
+        if ($quote_stock->getProperty('last_price') === 'error') {            // Check if an incorrect stock symbol was enetered
             $quote_stock_msg = "Quote Error: <br/> Incorrect Stock Symbol";   // if so set error message
+        }
+        else if ($quote_stock->getProperty('last_price') === 'noConnect') {   // Check if site can't connect to Yahoo!
+            $quote_stock_msg = "Quote Error: <br/> Can't reach Yahoo!";       // if so set error message
         }
         // else Yahoo was able to give correct info for the stock symbol...
         // create a msg to show of the stock symbol and the current price received from Yahoo
@@ -40,6 +43,9 @@ user.php
 
         if ($buy_stock->getProperty('last_price') === 'error') {            // Check if an incorrect stock symbol was enetered
                 $buy_stock_msg = "Purchase Error: <br/> Incorrect Stock Symbol";  // if so set error message   
+        }
+        else if ($buy_stock->getProperty('last_price') === 'noConnect') {     // Check if site can't connect to Yahoo!
+            $buy_stock_msg = "Quote Error: <br/> Can't reach Yahoo!";       // if so set error message
         }            
         else if(preg_match( "/^[1-9]+\d*$/", $qty )) {  //  Validate $qty variable, must start with 1-9 and any number of digits can follow
             if( $user->buyStock($buy_stock, $qty) ) {   //  buyStock() method will verify if user has enough money for purchase.  If so, it'll buy the stock.
@@ -72,7 +78,10 @@ user.php
             
         if ($sell_stock->getProperty('last_price') === 'error') {        // Check if an incorrect stock symbol was entered
             $sell_stock_msg = "Selling Error: <br/> Incorrect Stock Symbol";   // if so, set error message
-        }            
+        }        
+        else if ($sell_stock->getProperty('last_price') === 'noConnect') {   // Check if site can't connect to Yahoo!
+            $sell_stock_msg = "Quote Error: <br/> Can't reach Yahoo!";       // if so set error message
+        }    
         else if( preg_match( "/^[1-9]\d*$/", $qty )) {      //  Validate $qty variable, must start with 1-9 and any number of digits can follow
             if( $user->sellStock($sell_stock, $qty) ) {     //  sellStock() method will verify if user has enough shares to sell. If so, it'll sell the stock.
                 $sell_stock_msg = "Sold: ".$sell_stock->getProperty('symbol').'<br/>'.              // Set a 'receipt' message with sale details.

@@ -14,19 +14,23 @@ class Stock extends Database {
         parent::__construct();
         
         // yahoo url to get stock price
-        $url = "http://download.finance.yahoo.com/d/quotes.csv?s=" . $symbol . "&f=sl1d1t1c1ohgv&e=.csv";
-        
-        // getSymbolPrice parses the .csv file and extracts the stock price
-        $arr = $this->getSymbolPrice($symbol, $url);
+        $url = "http://download.finance.yahoo.com/d/quotes.csv?s=" . $symbol . "&f=sl1d1t1c1ohgv&e=.csv";  
 
-        // if 'n/a' appears, then Yahoo didn't recognize the stock symbol
-        if (in_array('N/A', $arr)) {
-            $this->last_price = 'error';    // notify the User view of the error
+        if ( $this->verify_url($url) ) {                    // verify that Yahoo! can be reached...
+            $arr = $this->getSymbolPrice($symbol, $url);    // getSymbolPrice parses the .csv file and extracts the stock price  
+
+            // if 'n/a' appears, then Yahoo didn't recognize the stock symbol
+            if (in_array('N/A', $arr)) {
+                $this->last_price = 'error';    // notify the User view of the error
+            }
+            else {  // else Yahoo recognized the stock symbol
+                $this->symbol     = $arr[0];    // extract symbol
+                $this->last_price = $arr[1];    // extract current price
+            }
         }
-        else {  // else Yahoo recognized the stock symbol
-            $this->symbol     = $arr[0];    // extract symbol
-            $this->last_price = $arr[1];    // extract current price
-        }
+        else {
+            $this->last_price = 'noConnect';    // notify the User view of the error
+        }                
     }
     
     // getSymbolPrice parses the .csv file and extracts the stock price
@@ -43,8 +47,20 @@ class Stock extends Database {
             return $this->$property;
         }
         return false;
-    }   
-}
+    }
 
-    
-    
+    // method to verify the site can connect to Yahoo! to get real-time stock price
+    public function verify_url($url) {
+        $ch = curl_init($url);                          // initialize curl session 
+        curl_setopt($ch, CURLOPT_NOBODY, true);         // exclude body
+        curl_exec($ch);                                 // execute curl session
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);  // extract HTTP code
+        curl_close($ch);                                // close session
+
+        if ( $code === 200 ) {                          // if 200, then csv file exists.
+            return true;
+        }
+        return false;
+    }
+}
+?>   

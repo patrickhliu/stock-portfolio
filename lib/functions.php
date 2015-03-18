@@ -83,7 +83,7 @@ helpers.php
         $mail->AltBody = "test";                                // This is the body in plain text for non-HTML mail clients
             
         if(!$mail->send()) {
-            echo "<p>".'Uh-oh, mailer Error: ' . $mail->ErrorInfo."</p>";
+            echo "<p>".'Error: ' . $mail->ErrorInfo."</p>";
         } else {
             echo "<p>Password Reset</p>";
             echo "<p>Check your email for instructions</p>";
