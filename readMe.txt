@@ -14,7 +14,7 @@ Project Details:
 	All new users start with $10,000 in their account balance.
 
 Hosted Link:
-	None yet
+	http://176.32.230.8/pliustock.com/
 
 Instructions:
 	You can register an account & in your account page you can
